@@ -55,21 +55,21 @@ const ResultsIngs: React.FC<MyComponentProps> = ({
   const saveRecipe = async (id: string) => {
     if (session && session?.user) {
       if (savedStatus[id] === true) {
+        setSavedStatus((prev) => ({ ...prev, [id]: !prev[id] }));
         const res = await axios.post("/api/users/removeSavedRecipe", {
           id: id,
         });
-        if (res.data.status == 200) {
+        if (res.data.status !== 200) {
           setSavedStatus((prev) => ({ ...prev, [id]: !prev[id] }));
-        } else {
           toast.error("Could not save recipe");
         }
       } else {
+        setSavedStatus((prev) => ({ ...prev, [id]: !prev[id] }));
         const res = await axios.post("/api/users/saveRecipe", {
           id: id,
         });
-        if (res.data.status == 200) {
+        if (res.data.status !== 200) {
           setSavedStatus((prev) => ({ ...prev, [id]: !prev[id] }));
-        } else {
           toast.error("Could not save recipe");
         }
       }
