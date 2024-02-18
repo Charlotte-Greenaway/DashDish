@@ -243,7 +243,7 @@ export default function RecipePage() {
             <Table
               aria-label="Selection behavior table example with dynamic content"
               color="success"
-              isHeaderSticky={true}
+              isHeaderSticky
               className="w-full md:w-1/2 h-full pt-4"
               removeWrapper
             >
@@ -282,7 +282,7 @@ export default function RecipePage() {
             <Table
               aria-label="Selection behavior table example with dynamic content"
               color="success"
-              isHeaderSticky={true}
+              isHeaderSticky
               className="w-full md:w-1/2"
             >
               <TableHeader>

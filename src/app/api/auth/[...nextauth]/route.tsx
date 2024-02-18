@@ -57,9 +57,9 @@ export const authOptions = {
       session.accessToken = token.accessToken;   
       return session;
     },
-    async redirect({ url, baseUrl }:any) {
+    async redirect({ url }:any) {
       // Return to the homepage after sign-in
-      return baseUrl
+      return url
     },
   },
     pages: {

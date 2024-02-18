@@ -1,11 +1,11 @@
 "use client";
 import { formatDistanceToNow } from "date-fns";
+import Link from "next/link";
 import {
   Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
   Button,
   NavbarMenu,
   NavbarMenuItem,
@@ -36,7 +36,7 @@ type User = {
 const NavBar: React.FC = () => {
   const { data: session, status }: any = useSession();
   const [userDetails, setUserDetails] = useState<User | null>({
-    name: "N/A",
+    name: "N/A", 
     email: "N/A",
     savedRecipes: [],
     userCreated: new Date(),
@@ -68,7 +68,7 @@ const NavBar: React.FC = () => {
           },
           {
             navItem: "Saved Recipes",
-            navLink: "#",
+            navLink: "/saved-recipes",
           },
           {
             navItem: "Search",
@@ -86,7 +86,7 @@ const NavBar: React.FC = () => {
           },
           {
             navItem: "Saved Recipes",
-            navLink: "#",
+            navLink: "/saved-recipes",
           },
           {
             navItem: "Search",
@@ -123,8 +123,8 @@ const NavBar: React.FC = () => {
           <NavbarItem isActive={path === "/" ? true : false}>
             <Link href="/">Home</Link>
           </NavbarItem>
-          <NavbarItem isActive={path === "/savedrecipes" ? true : false}>
-            <Link href="#">Saved Recipes</Link>
+          <NavbarItem isActive={path === "/saved-recipes" ? true : false}>
+            <Link href="/saved-recipes">Saved Recipes</Link>
           </NavbarItem>
           <NavbarItem isActive={path === "/search" ? true : false}>
             <Link href="#">Search</Link>
@@ -202,7 +202,6 @@ const NavBar: React.FC = () => {
               <Link
                 className="w-full text-[#20c536]"
                 href={item.navLink}
-                size="lg"
               >
                 {item.navItem}
               </Link>
