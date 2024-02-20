@@ -63,3 +63,21 @@ export const removeSavedRecipe = async (recipe: string, email:string) => {
   
   };
 
+  export const updatedSavedItem = async (item:string, email:string)=>{
+    
+    const result = await UserModel.updateOne(
+        { email:email },
+        { $addToSet: { shoppingList: item } }
+      );
+      return result;
+}
+
+export const removeSavedItem = async (item: string, email:string) => {
+  
+    const result = await UserModel.updateOne(
+      { email:email },
+      { $pull: { shoppingList: item } }
+    );
+    return result;
+  
+  };

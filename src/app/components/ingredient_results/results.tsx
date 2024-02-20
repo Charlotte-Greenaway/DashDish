@@ -33,7 +33,7 @@ const ResultsIngs: React.FC<MyComponentProps> = ({
   const resultsRef: any = useRef(null);
   const [viewRecipes,setViewRecipes]=useState(recipes);
   const [appliedFilters, setAppliedFilters]=useState<string[]>([]);
-  const { data: session, status }: any = useSession();
+  const { data: session }: any = useSession();
   const [savedStatus, setSavedStatus] = useState<{ [key: string]: boolean }>(
     {}
   );

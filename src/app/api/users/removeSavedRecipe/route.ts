@@ -14,12 +14,12 @@ export async function POST(request: NextRequest) {
             if(res){
                 return NextResponse.json({ status: 200 });
             }else{
-                return NextResponse.json({ message: "An error occurred while saving favourited recipe", status: 500 });
+                return NextResponse.json({ message: "An error occurred while removing favourited recipe", status: 500 });
             }
         }
         
     } catch (error) {
         console.log(error);
-        return NextResponse.json({ message: "An error occurred while saving favourited recipe", status: 500 });
+        return NextResponse.json({ message: "An error occurred while removing favourited recipe", status: 500 });
     }
 }

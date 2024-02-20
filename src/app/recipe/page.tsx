@@ -11,8 +11,9 @@ import {
   FaCheck,
   FaFacebook,
   FaEnvelope,
-  FaLink,
+  FaLink
 } from "react-icons/fa";
+import ShoppingButton from "../components/buttons/shoppingListButton";
 import {
   Modal,
   ModalContent,
@@ -56,7 +57,7 @@ interface Recipe {
 
 export default function RecipePage() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { data: session, status }: any = useSession();
+  const { data: session }: any = useSession();
   const [recipe, setRecipe] = useState<Recipe | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number>(-1);
   const [hasRated, setRated] = useState<boolean>(false);
@@ -69,7 +70,6 @@ export default function RecipePage() {
       id: id,
       missingIngs: missingIngs,
     });
-    console.log(response);
     setRecipe(response.data);
     isLoading(false);
   };
@@ -123,22 +123,22 @@ export default function RecipePage() {
   const saveRecipe = async (id: number) => {
     if (session && session?.user) {
       if (!savedStatus) {
+        setSavedStatus(true);
         const res = await axios.post("/api/users/removeSavedRecipe", {
           id: id,
         });
-        if (res.data.status == 200) {
-          setSavedStatus(true);
-        } else {
+        if (res.data.status !== 200) {
+          setSavedStatus(false);
           toast.error("Could not save recipe");
         }
       } else {
+        setSavedStatus(false);
         const res = await axios.post("/api/users/saveRecipe", {
           id: id,
         });
-        if (res.data.status == 200) {
-          setSavedStatus(false);
-        } else {
-          toast.error("Could not save recipe");
+        if (res.data.status !== 200) {
+          setSavedStatus(true);
+          toast.error("Could not unsave recipe");
         }
       }
     } else {
@@ -261,7 +261,11 @@ export default function RecipePage() {
                           </h4>
                         </TableCell>
                         <TableCell>
-                          <h4 className="text-md text-green-600">{item}</h4>
+                          <h4 className="text-md text-green-600 flex flex-row justify-around">{item}{
+                              session && session?.user && (
+                                <ShoppingButton item={item} isModal={false}/>
+                              )
+                            }</h4>
                         </TableCell>
                       </TableRow>
                     ))
@@ -273,6 +277,11 @@ export default function RecipePage() {
                         <TableCell>
                           <h4 className="text-md text-green-600">
                             {recipe.missingIngs[index] || ""}
+                            {
+                              session && session?.user && (
+                                <ShoppingButton item={item} isModal={false}/>
+                              )
+                            }
                           </h4>
                         </TableCell>
                       </TableRow>
@@ -399,29 +408,13 @@ export default function RecipePage() {
             </div>
           </div>
           <RecipeInstructions instructions={recipe.message.instructions}/>
-          {/* <div className="max-w-4xl mx-auto p-6 bg-white rounded-xl shadow-xl"> */}
-    {/* <h2 className="text-3xl font-bold text-green-900 mb-6">Instructions</h2>
-    <div className="bg-green-50 p-6 rounded-lg shadow-md">
-        <ol className="list-none space-y-4">
-            {recipe.message.instructions.map((instruction, index) => (
-                <li key={index} className="flex items-start">
-                    <span className="flex-shrink-0 text-green-600 mr-4">
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    </span>
-                    <p className="flex-1 text-green-800 text-lg">
-                        {instruction}
-                    </p>
-                </li>
-            ))}
-        </ol>
-    </div>
-</div> */}
 
           <Modal
-            backdrop="blur"
+            backdrop="opaque"
             isOpen={isOpen}
             onClose={onClose}
             className="m-auto"
+            placement="center"
           >
             <ModalContent>
               {(onClose) => (

@@ -57,7 +57,10 @@ export const authOptions = {
       session.accessToken = token.accessToken;   
       return session;
     },
-    async redirect({ url }:any) {
+    async redirect({ url, baseUrl}:any) {
+      if(new URL(url).pathname=="/login"){
+        return baseUrl;
+      }
       // Return to the homepage after sign-in
       return url
     },

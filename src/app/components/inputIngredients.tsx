@@ -159,7 +159,7 @@ const IngredientInput: React.FC<IngredientInputProps> = ({
           </Tooltip>
         </div>
         <Button
-          variant="ghost"
+          variant="flat"
           onClick={getRecipesByIngs}
           color="success"
           className="text-black  font-semibold"

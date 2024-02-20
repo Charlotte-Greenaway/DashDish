@@ -11,7 +11,6 @@ export async function POST(request: NextRequest) {
   try {
     const session = await getServerSession(authOptions);
     const { id, missingIngs } = await request.json();
-    console.log(session)
     const docs = await recipeModel.findOne({ _id: id });
 
     if (docs) {
@@ -33,10 +32,7 @@ export async function POST(request: NextRequest) {
       const missingIngsArr = (missingIngs==="No Ingredients")?[]:missingIngs.split(",");
       const matchedIngsArr: string[] = [];
       if (missingIngs !== "No Ingredients") {
-        
-        console.log(missingIngsArr);
         cleanIngredients.forEach((ing: string) => {
-          console.log(ing);
           if (!missingIngsArr.includes(ing)) {
             matchedIngsArr.push(ing);
           }
@@ -73,11 +69,9 @@ export async function POST(request: NextRequest) {
         status: 200,
       });
     } else {
-      console.log("Recipe not found");
       return NextResponse.json({ message: "Recipe not found", status: 404 });
     }
   } catch (error) {
-    console.log(error);
     return NextResponse.json({
       message: "An error occurred while fetching recipe",
       status: 500,

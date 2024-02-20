@@ -13,7 +13,6 @@ export async function POST(request: NextRequest) {
             const { id, userRating, rating, numOfRatings} = await request.json();
             const newRating = ((rating * numOfRatings) + userRating) / (numOfRatings + 1)
             const result = await recipeModel.updateOne({ _id: id }, { $set: { rating: newRating, numOfRatings: numOfRatings+1 } });
-            console.log(result);
             return NextResponse.json({message:newRating, status: 200 }); 
         }else{
             return NextResponse.json({ message: "An error occurred while updating rating", status: 500 });
