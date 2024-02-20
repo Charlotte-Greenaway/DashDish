@@ -3,7 +3,7 @@ import { connectToDb } from "@/database_actions/dbConfig";
 import UserModel from "@/models/user-model";
 import recipeModel from "@/models/recipeModel";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../auth/[...nextauth]/route";
+import { authOptions } from "@/app/authOptions";
  connectToDb();
 
 

@@ -1,7 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 import { updatedSavedIngredients } from "@/database_actions/users";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "../../auth/[...nextauth]/route";
+import { authOptions } from "@/app/authOptions";
 
 
 

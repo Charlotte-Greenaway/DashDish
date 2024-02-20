@@ -1,5 +1,5 @@
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "./api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/authOptions";
 import React from 'react';
 import IngredientInput from './components/inputIngredients';
 import { connectToDb } from "@/database_actions/dbConfig";

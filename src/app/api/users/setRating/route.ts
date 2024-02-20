@@ -1,6 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 import { connectToDb } from "@/database_actions/dbConfig";
-import { authOptions } from "../../auth/[...nextauth]/route";
+import { authOptions } from "@/app/authOptions";
 import { getServerSession } from "next-auth";
 import recipeModel from "@/models/recipeModel";
  connectToDb();

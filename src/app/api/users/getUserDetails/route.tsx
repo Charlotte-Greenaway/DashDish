@@ -2,7 +2,7 @@ import { NextResponse, NextRequest } from "next/server";
 import { connectToDb } from "@/database_actions/dbConfig";
 import UserModel from "@/models/user-model";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../auth/[...nextauth]/route";
+import { authOptions } from "@/app/authOptions";
  connectToDb();
 
 
