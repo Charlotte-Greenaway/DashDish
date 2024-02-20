@@ -149,7 +149,7 @@ export default function RecipePage() {
 
   return (
     <>
-    <Suspense>
+    <Suspense fallback={<div>Loading...</div>}>
       {recipe && (
         <div className="max-w-[1400px] mx-auto">
           <div className="flex flex-col lg:flex-row">
