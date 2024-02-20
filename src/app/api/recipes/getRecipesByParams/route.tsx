@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
     // Execute the query with the specified projections and aliases
     const recipes = await recipeModel.find(queryObj).select({
       _id: 1, // Include _id
-      name: 1, // Include name
+      recipeTitle:1,
       rating: 1, // Include rating
       image: 1, // Include image
       summary: 1, // Include summary
