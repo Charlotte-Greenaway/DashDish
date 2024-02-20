@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from 'react'
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { useSession } from "next-auth/react";
@@ -148,6 +149,7 @@ export default function RecipePage() {
 
   return (
     <>
+    <Suspense>
       {recipe && (
         <div className="max-w-[1400px] mx-auto">
           <div className="flex flex-col lg:flex-row">
@@ -452,6 +454,7 @@ export default function RecipePage() {
         </div>
       )}
       <Toaster />
+      </Suspense>
     </>
   );
 }
