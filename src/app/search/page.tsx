@@ -30,7 +30,7 @@ const Search = () => {
   const RECIPES_PER_PAGE = 9; // Number of recipes to show per page
   const resultsRef: any = useState(null);
   useEffect(() => {
-    if (resultsRef.current) {
+    if (resultsRef.current && (recipesToShow.length>0 || analysing)) {
       resultsRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [analysing]);
