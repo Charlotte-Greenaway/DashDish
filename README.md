@@ -2,7 +2,7 @@
 
 Welcome to <a href="https://www.dashdish.co.uk/">Dash Dish</a>, the ultimate solution for home cooks seeking inspiration and convenience in the kitchen. Our innovative web application transforms your cooking experience by offering personalized recipe suggestions based on the ingredients you have at hand. Say goodbye to the hassle of figuring out what to cook and hello to a world of culinary possibilities!
 
-##check it out at <a href="https://www.dashdish.co.uk/">dashdish.co.uk</a>
+## check it out at <a href="https://www.dashdish.co.uk/">dashdish.co.uk</a>
 
 
 ## Key Features
