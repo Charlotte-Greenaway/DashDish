@@ -56,7 +56,7 @@ interface Recipe {
   matchedIngs: string[];
 }
 
-export default function RecipePage() {
+function RecipePage() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { data: session }: any = useSession();
   const [recipe, setRecipe] = useState<Recipe | null>(null);
@@ -149,7 +149,6 @@ export default function RecipePage() {
 
   return (
     <>
-    <Suspense fallback={<div>Loading...</div>}>
       {recipe && (
         <div className="max-w-[1400px] mx-auto">
           <div className="flex flex-col lg:flex-row">
@@ -454,7 +453,15 @@ export default function RecipePage() {
         </div>
       )}
       <Toaster />
-      </Suspense>
     </>
   );
+}
+export default function Recipes() {
+  return (
+    // You could have a loading skeleton as the `fallback` too
+    <Suspense fallback={<div>Loading...</div>}>
+
+      <RecipePage/>
+    </Suspense>
+  )
 }
