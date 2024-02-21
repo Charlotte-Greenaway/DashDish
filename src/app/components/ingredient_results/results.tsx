@@ -205,7 +205,7 @@ const ResultsIngs: React.FC<MyComponentProps> = ({
                   </DropdownItem>
                   <DropdownItem
                     key="gluten-free"
-                    onClick={() => applyFilter("Gluten-free")}
+                    onClick={() => applyFilter("Gluten-Free")}
                   >
                     Gluten-free
                   </DropdownItem>
