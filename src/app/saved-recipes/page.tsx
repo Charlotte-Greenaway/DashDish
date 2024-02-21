@@ -42,7 +42,7 @@ const SavedRecipes = () => {
       <>
         {isAnalysing ? (
           <>
-            <div id="cooking">
+            <div id="cooking" className="min-w-[250px] w-1/2">
               <div className="bubble"></div>
               <div className="bubble"></div>
               <div className="bubble"></div>
@@ -222,6 +222,7 @@ const SavedRecipes = () => {
                 )}
               </div>
               <Toaster />
+              
             </div>
           </>
         )}
@@ -240,6 +241,7 @@ const SavedRecipes = () => {
           </p>
           <LoginSection />
         </div>
+        
       </div>
     );
   }

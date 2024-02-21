@@ -446,7 +446,7 @@ function RecipePage() {
         </div>
       )}
       {loading && (
-        <div id="cooking">
+        <div id="cooking" className="min-w-[250px] w-1/2">
           <div className="bubble"></div>
           <div className="bubble"></div>
           <div className="bubble"></div>
