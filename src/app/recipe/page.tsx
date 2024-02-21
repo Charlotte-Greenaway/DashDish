@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Suspense } from 'react'
+import { Suspense } from "react";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { useSession } from "next-auth/react";
@@ -12,7 +12,7 @@ import {
   FaCheck,
   FaFacebook,
   FaEnvelope,
-  FaLink
+  FaLink,
 } from "react-icons/fa";
 import ShoppingButton from "../components/buttons/shoppingListButton";
 import {
@@ -50,7 +50,7 @@ interface Recipe {
     equipmentNeeded: string[];
     winePairings: string[];
     ingredients: string[];
-    instructions:string[]
+    instructions: string[];
   };
   missingIngs: string[];
   matchedIngs: string[];
@@ -262,11 +262,12 @@ function RecipePage() {
                           </h4>
                         </TableCell>
                         <TableCell>
-                          <h4 className="text-md text-green-600 flex flex-row justify-around">{item}{
-                              session && session?.user && (
-                                <ShoppingButton item={item} isModal={false}/>
-                              )
-                            }</h4>
+                          <h4 className="text-md text-green-600 flex flex-row justify-around">
+                            {item}
+                            {session && session?.user && (
+                              <ShoppingButton item={item} isModal={false} />
+                            )}
+                          </h4>
                         </TableCell>
                       </TableRow>
                     ))
@@ -278,11 +279,9 @@ function RecipePage() {
                         <TableCell>
                           <h4 className="text-md text-green-600">
                             {recipe.missingIngs[index] || ""}
-                            {
-                              session && session?.user && (
-                                <ShoppingButton item={item} isModal={false}/>
-                              )
-                            }
+                            {session && session?.user && (
+                              <ShoppingButton item={item} isModal={false} />
+                            )}
                           </h4>
                         </TableCell>
                       </TableRow>
@@ -408,7 +407,7 @@ function RecipePage() {
               </div>
             </div>
           </div>
-          <RecipeInstructions instructions={recipe.message.instructions}/>
+          <RecipeInstructions instructions={recipe.message.instructions} />
 
           <Modal
             backdrop="opaque"
@@ -447,9 +446,21 @@ function RecipePage() {
         </div>
       )}
       {loading && (
-        <div className="show">
-          <span className="loader mx-auto"></span>
-          <span className="loader2">Loading</span>
+        <div id="cooking">
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div id="area">
+            <div id="sides">
+              <div id="pan"></div>
+              <div id="handle"></div>
+            </div>
+            <div id="pancake">
+              <div id="pastry"></div>
+            </div>
+          </div>
         </div>
       )}
       <Toaster />
@@ -460,8 +471,7 @@ export default function Recipes() {
   return (
     // You could have a loading skeleton as the `fallback` too
     <Suspense fallback={<div>Loading...</div>}>
-
-      <RecipePage/>
+      <RecipePage />
     </Suspense>
-  )
+  );
 }

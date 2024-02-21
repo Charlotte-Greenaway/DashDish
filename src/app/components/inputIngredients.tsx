@@ -131,7 +131,8 @@ const IngredientInput: React.FC<IngredientInputProps> = ({
 
   return (
     <>
-      <div className="mt-5 p-6 max-w-2xl mx-auto bg-white rounded-xl shadow-md flex flex-col items-center space-y-4">
+    <div className="max-w-[1150px] mx-auto bg-white">
+      <div className="mt-5 p-6 max-w-2xl mx-auto flex flex-col items-center space-y-4">
         <div className="flex flex-row items-center justify-center">
           <h2 className="text-2xl font-semibold">Add Your Ingredients</h2>
           <Tooltip
@@ -214,6 +215,7 @@ const IngredientInput: React.FC<IngredientInputProps> = ({
         recipeanaly={isAnalysing}
         dbSavedRecipes={savedRecipes}
       />
+      </div>
     </>
   );
 };

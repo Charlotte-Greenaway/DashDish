@@ -30,7 +30,7 @@ const Search = () => {
   const RECIPES_PER_PAGE = 9; // Number of recipes to show per page
   const resultsRef: any = useState(null);
   useEffect(() => {
-    if (resultsRef.current && (recipesToShow.length>0 || analysing)) {
+    if (resultsRef.current && (recipesToShow.length > 0 || analysing)) {
       resultsRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [analysing]);
@@ -166,7 +166,7 @@ const Search = () => {
   };
 
   return (
-    <div className="max-w-[1150px] mx-auto p-4 flex flex-col items-center justify-center">
+    <div className="max-w-[1150px] mx-auto p-4 flex flex-col items-center justify-center bg-white">
       <h2 className="text-3xl w-full max-w-3xl text-center md:text-4xl font-bold text-green-900 mb-4 mt-2 shadow-md p-3 rounded-lg bg-green-50 border-l-4 border-green-400">
         Search For Recipes
       </h2>
@@ -247,9 +247,21 @@ const Search = () => {
               <RecipeWidget key={item._id} recipe={item} />
             ))
           ) : analysing ? (
-            <div className="show">
-              <span className="loader mx-auto"></span>
-              <span className="loader2">Loading</span>
+            <div id="cooking">
+              <div className="bubble"></div>
+              <div className="bubble"></div>
+              <div className="bubble"></div>
+              <div className="bubble"></div>
+              <div className="bubble"></div>
+              <div id="area">
+                <div id="sides">
+                  <div id="pan"></div>
+                  <div id="handle"></div>
+                </div>
+                <div id="pancake">
+                  <div id="pastry"></div>
+                </div>
+              </div>
             </div>
           ) : (
             <p className="my-4 mx-auto">Search for recipes!</p>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { signIn } from "next-auth/react";
 const LoginSection = () => {
   return (
@@ -48,10 +48,20 @@ const LoginSection = () => {
           </svg>
           Continue with Discord
         </button>
+        <div className="text-sm text-gray-600 mt-4">
+          By logging in, you agree to our
+          <a
+            href="/privacy-policy"
+            target="_blank"
+            className="text-green-600 hover:text-green-800 underline pl-1"
+          >
+            Privacy Policy
+          </a>
+          .
+        </div>
       </div>
     </>
   );
 };
-
 
 export default LoginSection;

@@ -42,14 +42,26 @@ const SavedRecipes = () => {
       <>
         {isAnalysing ? (
           <>
-            <div className="show">
-              <span className="loader mx-auto"></span>
-              <span className="loader2">Loading</span>
+            <div id="cooking">
+              <div className="bubble"></div>
+              <div className="bubble"></div>
+              <div className="bubble"></div>
+              <div className="bubble"></div>
+              <div className="bubble"></div>
+              <div id="area">
+                <div id="sides">
+                  <div id="pan"></div>
+                  <div id="handle"></div>
+                </div>
+                <div id="pancake">
+                  <div id="pastry"></div>
+                </div>
+              </div>
             </div>
           </>
         ) : (
           <>
-            <div className="p-6 max-w-[1150px] mx-auto">
+            <div className="p-6 max-w-[1150px] mx-auto bg-white">
               {/* Content for logged-in users */}
               <h2 className="text-3xl text-center md:text-4xl font-bold text-green-900 mb-4 mt-2 shadow-md p-3 rounded-lg bg-green-50 border-l-4 border-green-400">
                 Your Saved Recipes
@@ -67,8 +79,8 @@ const SavedRecipes = () => {
                     </h3>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="10em"
-                      height="10em"
+                      width="20em"
+                      height="20em"
                       viewBox="0 0 713.52567 614.00006"
                     >
                       <g>
