@@ -123,22 +123,22 @@ function RecipePage() {
 
   const saveRecipe = async (id: number) => {
     if (session && session?.user) {
-      if (!savedStatus) {
-        setSavedStatus(true);
+      if (savedStatus) {
+        setSavedStatus(false);
         const res = await axios.post("/api/users/removeSavedRecipe", {
           id: id,
         });
         if (res.data.status !== 200) {
-          setSavedStatus(false);
+          setSavedStatus(true);
           toast.error("Could not save recipe");
         }
       } else {
-        setSavedStatus(false);
+        setSavedStatus(true);
         const res = await axios.post("/api/users/saveRecipe", {
           id: id,
         });
         if (res.data.status !== 200) {
-          setSavedStatus(true);
+          setSavedStatus(false);
           toast.error("Could not unsave recipe");
         }
       }
