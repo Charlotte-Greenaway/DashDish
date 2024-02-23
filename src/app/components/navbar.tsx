@@ -18,6 +18,7 @@ import {
 } from "@nextui-org/react";
 import { useSession, signOut } from "next-auth/react";
 import React, { useState, useEffect } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import AccountModal from "./accountModal";
 import ShoppingModal from "./ShoppingModal";
 import { usePathname } from "next/navigation";
@@ -39,8 +40,8 @@ const NavBar: React.FC = () => {
     userCreated: new Date(),
     shoppingList: [],
   });
-  const [shoppingOpen, isShoppingOpen]=useState<boolean>(false);
-  const [accountOpen, isAccountOpen]=useState<boolean>(false);
+  const [shoppingOpen, isShoppingOpen] = useState<boolean>(false);
+  const [accountOpen, isAccountOpen] = useState<boolean>(false);
   const getUserDetails = async () => {
     const details = await axios.post("/api/users/getUserDetails");
     if (details.data.status == 200) {
@@ -52,7 +53,12 @@ const NavBar: React.FC = () => {
     if (session && session.user) {
       getUserDetails();
     }
-  }, [session,  isShoppingOpen]);
+  }, [session]);
+  useEffect(() => {
+    if (session && session?.user) {
+      getUserDetails();
+    }
+  }, [shoppingOpen]);
   const path = usePathname()!;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -145,16 +151,10 @@ const NavBar: React.FC = () => {
                   />
                 </DropdownTrigger>
                 <DropdownMenu aria-label="Static Actions">
-                  <DropdownItem
-                    key="new"
-                    onClick={()=>isAccountOpen(true)}
-                  >
+                  <DropdownItem key="new" onClick={() => isAccountOpen(true)}>
                     My Account
                   </DropdownItem>
-                  <DropdownItem
-                    key="new"
-                    onClick={()=>isShoppingOpen(true)}
-                  >
+                  <DropdownItem key="new" onClick={() => isShoppingOpen(true)}>
                     My Shopping List
                   </DropdownItem>
                   <DropdownItem
@@ -187,16 +187,10 @@ const NavBar: React.FC = () => {
                   />
                 </DropdownTrigger>
                 <DropdownMenu aria-label="Static Actions">
-                  <DropdownItem
-                    key="new"
-                    onClick={()=>isAccountOpen(true)}
-                  >
+                  <DropdownItem key="new" onClick={() => isAccountOpen(true)}>
                     My Account
                   </DropdownItem>
-                  <DropdownItem
-                    key="new"
-                    onClick={()=>isShoppingOpen(true)}
-                  >
+                  <DropdownItem key="new" onClick={() => isShoppingOpen(true)}>
                     My Shopping List
                   </DropdownItem>
                   <DropdownItem
@@ -233,10 +227,19 @@ const NavBar: React.FC = () => {
       </Navbar>
       {userDetails && (
         <>
-          <AccountModal userDetails={userDetails} isModalOpen={accountOpen} setOpen={isAccountOpen}/>
-          <ShoppingModal userDetails={userDetails} isModalOpen={shoppingOpen} setOpen={isShoppingOpen}/>
+          <AccountModal
+            userDetails={userDetails}
+            isModalOpen={accountOpen}
+            setOpen={isAccountOpen}
+          />
+          <ShoppingModal
+            userDetails={userDetails}
+            isModalOpen={shoppingOpen}
+            setOpen={isShoppingOpen}
+          />
         </>
       )}
+      <Toaster />
     </header>
   );
 };
