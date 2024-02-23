@@ -18,7 +18,6 @@ import {
 } from "@nextui-org/react";
 import { useSession, signOut } from "next-auth/react";
 import React, { useState, useEffect } from "react";
-import toast, { Toaster } from "react-hot-toast";
 import AccountModal from "./accountModal";
 import ShoppingModal from "./ShoppingModal";
 import { usePathname } from "next/navigation";
@@ -239,7 +238,6 @@ const NavBar: React.FC = () => {
           />
         </>
       )}
-      <Toaster />
     </header>
   );
 };
