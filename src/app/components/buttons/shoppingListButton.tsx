@@ -3,12 +3,13 @@ import { FaShoppingBasket, FaCheck } from "react-icons/fa";
 import { useState } from "react";
 import axios from "axios";
 import toast from 'react-hot-toast';
-import { usePathname } from "next/navigation";
+
 interface item{
     item:string;
     isModal:boolean;
 }
 const ShoppingButton:React.FC<item> = ({item, isModal}) => {
+
   const [isSaved, setIsSaved] = useState(isModal);
   const saveToSl = async() => {
     setIsSaved(!isSaved);
