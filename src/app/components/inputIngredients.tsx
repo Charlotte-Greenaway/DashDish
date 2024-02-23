@@ -160,10 +160,10 @@ const IngredientInput: React.FC<IngredientInputProps> = ({
           </Tooltip>
         </div>
         <Button
-          variant="flat"
+          variant="shadow"
           onClick={getRecipesByIngs}
           color="success"
-          className="text-black  font-semibold"
+          className="text-white  font-semibold"
         >
           Find my recipes!
         </Button>

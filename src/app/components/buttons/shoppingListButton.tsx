@@ -42,7 +42,7 @@ const ShoppingButton:React.FC<item> = ({item, isModal}) => {
       <button
         onClick={saveToSl}
         aria-description="add to shopping list"
-        className="mx-2 bg-green-400 px-3 py-1 rounded-md"
+        className="mx-2 bg-green-400 px-3 py-1 rounded-md h-7 "
       >
         {isSaved ? (
           <FaCheck size={15} color="white" />

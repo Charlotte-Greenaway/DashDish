@@ -75,7 +75,7 @@ function downloadShoppingListAsWord(shoppingList: string[]) {
 // React button component for downloading the shopping list
 const DownloadWordButton: React.FC<ShoppingList> = ({ shoppingList }) => {
   return (
-    <button onClick={() => downloadShoppingListAsWord(shoppingList)}>
+    <button onClick={() => downloadShoppingListAsWord(shoppingList)} className="ml-2">
       <FaDownload color="green" size={20}/>
     </button>
   );

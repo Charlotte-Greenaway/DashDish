@@ -10,7 +10,7 @@ import {
 import Link from "next/link";
 import { useEffect } from "react";
 import { useSession } from "next-auth/react";
-
+import ShareButton from "./buttons/shareShopping";
 import ShoppingButton from "./buttons/shoppingListButton";
 import DownloadWordButton from "./buttons/downoadListButton";
 import { FaEnvelope } from "react-icons/fa";
@@ -59,7 +59,9 @@ const ShoppingModal: React.FC<User> = ({ userDetails, isModalOpen, setOpen}) => 
         onOpenChange={onOpenChange}
         backdrop="opaque"
         placement="center"
-        hideCloseButton
+        hideCloseButton={true}
+        isDismissable={false}
+        scrollBehavior="inside"
       >
         <ModalContent>
           {(onClose) => (
@@ -71,15 +73,17 @@ const ShoppingModal: React.FC<User> = ({ userDetails, isModalOpen, setOpen}) => 
                 {userDetails ? (
                   <>
                     <div className="flex flex-row items-center">
+                    <ShareButton shoppingList={userDetails.shoppingList}/>
+                      
+                      <DownloadWordButton
+                        shoppingList={userDetails.shoppingList}
+                      />
                       <Link
                         href={createMailtoLink(userDetails.shoppingList)}
                         className="mx-4"
                       >
                         <FaEnvelope size={20} color="green" />
                       </Link>
-                      <DownloadWordButton
-                        shoppingList={userDetails.shoppingList}
-                      />
                     </div>
                     <div className="flex flex-col bg-white rounded-lg p-4 shadow-lg">
                       <div className="divide-y divide-gray-200">

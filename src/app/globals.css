@@ -76,8 +76,7 @@
     position: relative;
     margin: auto;
     top: 0;
-    height: 50vh;
-    overflow: hidden;
+    min-height: 60vh;
 }
 
 #cooking #area {

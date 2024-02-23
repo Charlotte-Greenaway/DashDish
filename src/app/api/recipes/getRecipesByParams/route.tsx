@@ -25,9 +25,9 @@ export async function POST(request: NextRequest) {
     }
 
     // Add other filters to the query object if they exist
-    if (cuisine) queryObj.cuisine = cuisine;
-    if (diet) queryObj.diet = diet;
-    if (mealType) queryObj.mealType = mealType;
+    if (cuisine &&cuisine!=="Cuisine") queryObj.cuisine = cuisine;
+    if (diet &&diet!=="Diet") queryObj.diet = diet;
+    if (mealType && mealType!=="Meal Type") queryObj.mealType = mealType;
     if (allergens.length>0) queryObj.allergens = { $nin: allergens }; // Assuming 'allergens' is a comma-separated string
 
     // Execute the query with the specified projections and aliases

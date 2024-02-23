@@ -50,32 +50,36 @@ const Search = () => {
   };
 
   const findRecipes = async () => {
-    setIsAnalysing(true);
-    try {
-      const res = await axios.post("/api/recipes/getRecipesByParams", {
-        searchTerm,
-        cuisine,
-        diet,
-        mealType,
-        allergens,
-      });
+    if (searchTerm !== "") {
+      setIsAnalysing(true);
+      try {
+        const res = await axios.post("/api/recipes/getRecipesByParams", {
+          searchTerm,
+          cuisine,
+          diet,
+          mealType,
+          allergens,
+        });
 
-      if (res.data.status === 200) {
-        setAllRecipes(res.data.message);
-        setCurrentPage(1); // Reset to first page for new search results
-      } else {
-        toast.error("Could not retrieve recipes");
+        if (res.data.status === 200) {
+          setAllRecipes(res.data.message);
+          setCurrentPage(1); // Reset to first page for new search results
+        } else {
+          toast.error("Could not retrieve recipes");
+        }
+      } catch (error) {
+        toast.error("An error occurred while fetching recipes");
+        console.error(error);
+      } finally {
+        setIsAnalysing(false);
       }
-    } catch (error) {
-      toast.error("An error occurred while fetching recipes");
-      console.error(error);
-    } finally {
-      setIsAnalysing(false);
+    } else {
+      toast.error("Please enter a search term.");
     }
   };
   const options = {
     cuisineOptions: [
-      "None",
+      "Cuisine",
       "Mediterranean",
       "German",
       "Tibetan",
@@ -102,7 +106,7 @@ const Search = () => {
       "Alpine",
     ],
     dietOptions: [
-      "None",
+      "Diet",
       "Low carb",
       "Mediterranean",
       "Vegetarian",
@@ -124,7 +128,7 @@ const Search = () => {
       "Vegan",
     ],
     mealTypeOptions: [
-      "None",
+      "Meal Type",
       "Drink",
       "Side",
       "Dressing",
@@ -148,7 +152,6 @@ const Search = () => {
       "Entree",
     ],
     allergenOptions: [
-      "None",
       "Wheat",
       "Milk",
       "Tree nuts",
@@ -178,6 +181,7 @@ const Search = () => {
             className="w-full px-4 py-2 border rounded-lg"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            required
           />
           <select
             className="w-full px-4 py-2 border rounded-lg"
@@ -185,7 +189,7 @@ const Search = () => {
             onChange={(e) => setCuisine(e.target.value)}
           >
             {options.cuisineOptions.map((option) => (
-              <option key={option} value={option}>
+              <option key={option} value={option} >
                 {option}
               </option>
             ))}

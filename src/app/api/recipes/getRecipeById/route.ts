@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
           cleanIngredients.map((ing: string) => {
             var found = false;
             userDetails.savedIngredients.map((userIng: string) => {
-              if (ing.includes(userIng)) {
+              if (ing.includes(userIng) || userIng.includes(ing)) {
                 matchedIngs.push(ing);
                 found = true;
               }
