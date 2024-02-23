@@ -33,7 +33,7 @@ export default function RootLayout({
           content="https://www.dashdish.co.uk/_next/static/media/logo.c58f19bb.png"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="content-language" content="en" />
+        <meta httpEquiv="content-language" content="en" />
         <meta name="robots" content="index, follow" />
       </head>
       <body>
