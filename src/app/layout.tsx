@@ -7,7 +7,7 @@ import Timer from "./components/buttons/timer";
 export const metadata: Metadata = {
   title: "Dash Dish",
   description:
-    "The recipe book for your kitchen - find recipes based on the ingredients you have at home.",
+    "Explore Dash Dish to find the perfect recipe for any occasion. Utilize the ingredients you already have at home to create delicious meals.",
 };
 
 export default function RootLayout({
