@@ -31,4 +31,4 @@ Dash Dish is proprietary but free to use.
 
 ## Connect with Us
 
-Have questions, feedback, or just want to say hi? Connect with us at charlottegreenaway654@gmail.com.
+Have questions, feedback, or just want to say hi? Connect with me at charlottegreenaway654@gmail.com.
