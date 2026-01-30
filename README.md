@@ -1,6 +1,6 @@
-# <a href="https://www.dashdish.co.uk/">Dash Dish</a>: Your Personalized Digital Cookbook
+# Dash Dish: Your Personalized Digital Cookbook
 
-Welcome to <a href="https://www.dashdish.co.uk/">Dash Dish</a>, the ultimate solution for home cooks seeking inspiration and convenience in the kitchen. Our innovative web application transforms your cooking experience by offering personalized recipe suggestions based on the ingredients you have at hand. Say goodbye to the hassle of figuring out what to cook and hello to a world of culinary possibilities!
+Welcome to Dash Dish, the ultimate solution for home cooks seeking inspiration and convenience in the kitchen. Our innovative web application transforms your cooking experience by offering personalized recipe suggestions based on the ingredients you have at hand. Say goodbye to the hassle of figuring out what to cook and hello to a world of culinary possibilities!
 
 ## check it out at <a href="https://www.dashdish.co.uk/">dashdish.co.uk</a>
 
@@ -16,7 +16,7 @@ Welcome to <a href="https://www.dashdish.co.uk/">Dash Dish</a>, the ultimate sol
   
 ## Getting Started
 
-To get started with <a href="https://www.dashdish.co.uk/">Dash Dish</a>, follow these simple steps:
+To get started with Dash Dish, follow these simple steps:
 
 1. **Set Up Your Account**: Sign up to create your personal profile.
 2. **Input Your Ingredients**: Enter the ingredients you have in your kitchen.
